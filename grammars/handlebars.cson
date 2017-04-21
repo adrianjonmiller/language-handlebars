@@ -9,6 +9,125 @@
 'name': 'Handlebars'
 'patterns': [
   {
+    name: "source.stylus.embedded.html"
+    begin: "(?:^\\s+)?(<)((?i:style))\\b(?=[^>]*lang=[\"']stylus[\"'])"
+    end: "(</)((?i:style))(>)(?:\\s*\\n)?"
+    captures:
+      "1":
+        name: "punctuation.definition.tag.html"
+      "2":
+        name: "entity.name.tag.style.html"
+      "3":
+        name: "punctuation.definition.tag.html"
+    patterns: [
+      {
+        include: "#tag-stuff"
+      }
+      {
+        begin: "(>)"
+        beginCaptures:
+          "1":
+            name: "punctuation.definition.tag.html"
+        end: "(?=</(?i:style))"
+        patterns: [
+          {
+            include: "source.stylus"
+          },
+          {
+            include: "source.css.stylus"
+          }
+        ]
+      }
+    ]
+  }
+  {
+    name: "source.css.postcss.embedded.html"
+    begin: "(?:^\\s+)?(<)((?i:style))\\b(?=[^>]*lang=[\"'](?:postcss)[\"'])"
+    end: "(</)((?i:style))(>)(?:\\s*\\n)?"
+    captures:
+      "1":
+        name: "punctuation.definition.tag.html"
+      "2":
+        name: "entity.name.tag.style.html"
+      "3":
+        name: "punctuation.definition.tag.html"
+    patterns: [
+      {
+        include: "#tag-stuff"
+      }
+      {
+        begin: "(>)"
+        beginCaptures:
+          "1":
+            name: "punctuation.definition.tag.html"
+        end: "(?=</(?i:style))"
+        patterns: [
+          {
+            include: "source.css.postcss"
+          }
+        ]
+      }
+    ]
+  }
+  {
+    name: "source.sass.embedded.html"
+    begin: "(?:^\\s+)?(<)((?i:style))\\b(?=[^>]*lang=[\"'](?:sass)[\"'])"
+    end: "(</)((?i:style))(>)(?:\\s*\\n)?"
+    captures:
+      "1":
+        name: "punctuation.definition.tag.html"
+      "2":
+        name: "entity.name.tag.style.html"
+      "3":
+        name: "punctuation.definition.tag.html"
+    patterns: [
+      {
+        include: "#tag-stuff"
+      }
+      {
+        begin: "(>)"
+        beginCaptures:
+          "1":
+            name: "punctuation.definition.tag.html"
+        end: "(?=</(?i:style))"
+        patterns: [
+          {
+            include: "source.sass"
+          }
+        ]
+      }
+    ]
+  }
+  {
+    name: "source.css.scss.embedded.html"
+    begin: "(?:^\\s+)?(<)((?i:style))\\b(?=[^>]*lang=[\"'](?:scss)[\"'])"
+    end: "(</)((?i:style))(>)(?:\\s*\\n)?"
+    captures:
+      "1":
+        name: "punctuation.definition.tag.html"
+      "2":
+        name: "entity.name.tag.style.html"
+      "3":
+        name: "punctuation.definition.tag.html"
+    patterns: [
+      {
+        include: "#tag-stuff"
+      }
+      {
+        begin: "(>)"
+        beginCaptures:
+          "1":
+            name: "punctuation.definition.tag.html"
+        end: "(?=</(?i:style))"
+        patterns: [
+          {
+            include: "source.css.scss"
+          }
+        ]
+      }
+    ]
+  }
+  {
     'begin': '(\\{\\{)((?i:collection|view)\\b)\\s+([A-Z][a-zA-Z\\-.]+)\\b'
     'beginCaptures':
       '1':
