@@ -1,4 +1,11 @@
 '.text.html.handlebars':
+  "Handlebars":
+    "prefix": "template"
+    "body": """
+      </script>
+      <style lang="${2:css}">
+      </style>
+    """
   'bindAttr':
     'prefix': 'ba'
     'body': '{{bindAttr ${1:class}=${2:"${3:isSelected}"}}}'
